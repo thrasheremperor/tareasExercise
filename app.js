@@ -1,17 +1,18 @@
-let process=require('process');
-let moduloTareas=require('./tareas');
-let comando=process.argv[2];
+const process=require('process');
+const moduloTareas=require('./tareas');
+const comando=process.argv[2];
+
 switch (comando){
     case 'list':
         let tareas=moduloTareas.leerJSON();
         if (tareas.length===0){
-            console.log("Task list is empty")
+            console.log("This list is empty")
         }else{
             console.log("----------------------------")
-            console.log("List of Tasks")
+            console.log("Task List")
             console.log("----------------------------")
-            for (let i=0;i<tareas.length;i++){
-                console.log("Task Title: "+tareas[i].titulo+' - Status: '+tareas[i].estado)
+            for (let tarea of tareas){
+                console.log(`Task Title: ${tarea.titulo} - Status: ${tarea.estado}`)
             };
         };
         break;
